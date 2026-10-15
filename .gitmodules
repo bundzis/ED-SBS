@@ -1,0 +1,3 @@
+[submodule "darwin3"]
+	path = darwin3
+	url = git@github.com:bundzis/darwin3.git
