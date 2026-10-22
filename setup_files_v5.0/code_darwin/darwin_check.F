@@ -1706,6 +1706,9 @@ C--   Print parameters from DARWIN_PARAMS.h
       CALL WRITE_0D_RL(TempCoeffArr,INDEX_NONE,
      &'TempCoeffArr =',
      &' /* pre-factor for pseudo-Arrhenius (TEMP_VERSION 2) */')
+      CALL WRITE_0D_RL(TempAeArrMacromol,INDEX_NONE,
+     &'TempAeArrMacromol =',
+     &' /* temp effect on protein biosyn (MACROMOL GROWTH) (K) */')
       CALL WRITE_0D_RL(reminTempAe,INDEX_NONE,
      &'reminTempAe =',
      &' /* temperature coefficient for remineralization (TEMP_VERSION 4)

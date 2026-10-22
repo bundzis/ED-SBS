@@ -97,6 +97,7 @@ C----
      &    TempAeArr,
      &    TemprefArr,
      &    TempCoeffArr,
+     &    TempAeArrMacromol,
      &    reminTempAe,
      &    mortTempAe,
      &    mort2TempAe,
@@ -381,6 +382,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
       TempAeArr = -4000.0 _d 0
       TemprefArr = 293.15 _d 0
       TempCoeffArr = 0.5882 _d 0
+      TempAeArrMacromol = -8420.0 _d 0
       reminTempAe = 0.0438 _d 0
       mortTempAe = 0.0438 _d 0
       mort2TempAe = 0.0438 _d 0
