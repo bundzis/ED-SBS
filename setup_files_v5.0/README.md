@@ -7,6 +7,7 @@ current darwin3 repo.
 The goal of this setup version is to add in a sediment tracer that can 
 settle and interact with the light field. Sediment resuspension may be 
 added on later...
+
 --------------------------------------------------------------------------
 
 (23/10/2026)
@@ -14,7 +15,7 @@ Copied Raphael's TSS code from: https://github.com/search?q=repo%3AMITgcm-contri
 
 
 
-# --- See below fo Old Instructions on Compiling & Running ---
+*See below fo Old Instructions on Compiling & Running*
 # Running instructions for ED-SBS v3.2
 
 WARNING: An Earthdata account is required to download forcing files. Create it at: https://urs.earthdata.nasa.gov/users/new
