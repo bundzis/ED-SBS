@@ -294,7 +294,19 @@ C
      &    ALKrunoff_exfremo_intercept,
      &    ALKrunoff_exfremo_slope,
      &    ALKrunoffmask,
-     &    darwin_inscal_ALKrunoff
+     &    darwin_inscal_ALKrunoff,
+C
+     &    TSSrunofffile,
+     &    TSSrunoffperiod,
+     &    TSSrunoffRepCycle,
+     &    TSSrunoffStartTime,
+     &    TSSrunoffstartdate1,
+     &    TSSrunoffstartdate2,
+     &    TSSrunoffconst,
+     &    TSSrunoff_exfremo_intercept,
+     &    TSSrunoff_exfremo_slope,
+     &    TSSrunoffmask,
+     &    darwin_inscal_TSSrunoff
 
 #ifdef USE_EXF_INTERPOLATION
       NAMELIST/darwin_interp_params/
@@ -449,7 +461,15 @@ C
      &    ALKrunoff_nlat,
      &    ALKrunoff_lon_inc,
      &    ALKrunoff_interpMethod,
-     &    ALKrunoff_lat_inc
+     &    ALKrunoff_lat_inc,
+C
+     &    TSSrunoff_lon0,
+     &    TSSrunoff_lat0,
+     &    TSSrunoff_nlon,
+     &    TSSrunoff_nlat,
+     &    TSSrunoff_lon_inc,
+     &    TSSrunoff_interpMethod,
+     &    TSSrunoff_lat_inc
 #endif
 
 C Open and read the data.darwin file
@@ -712,6 +732,19 @@ C Open and read the data.darwin file
 
       darwin_inscal_ALKrunoff    =  1. _d 0
 
+      TSSrunofffile = ' '
+      TSSrunoffperiod             = 0.0 _d 0
+      TSSrunoffRepCycle           = repeatPeriod
+      TSSrunoffStartTime          = UNSET_RL
+      TSSrunoffstartdate1         = 0
+      TSSrunoffstartdate2         = 0
+      TSSrunoffconst              = 0 _d 0
+      TSSrunoff_exfremo_intercept = 0.0 _d 0
+      TSSrunoff_exfremo_slope     = 0.0 _d 0
+      TSSrunoffmask = 'c'
+
+      darwin_inscal_TSSrunoff    =  1. _d 0
+
 #ifdef USE_EXF_INTERPOLATION
 
       PAR_lon0 = inp_lon0
@@ -847,6 +880,13 @@ C Open and read the data.darwin file
       ALKrunoff_lon_inc = inp_dLon
       ALKrunoff_interpMethod  = 1
 
+      TSSrunoff_lon0 = inp_lon0
+      TSSrunoff_lat0 = inp_lat0
+      TSSrunoff_nlon = inp_gNx
+      TSSrunoff_nlat = inp_gNy
+      TSSrunoff_lon_inc = inp_dLon
+      TSSrunoff_interpMethod  = 1
+
       DO j=1,MAX_LAT_INC
         PAR_lat_inc(j) = inp_dLat(j)
         iron_lat_inc(j) = inp_dLat(j)
@@ -867,6 +907,7 @@ C Open and read the data.darwin file
         PONrunoff_lat_inc(j) = inp_dLat(j)
         DICrunoff_lat_inc(j) = inp_dLat(j)
         ALKrunoff_lat_inc(j) = inp_dLat(j)
+        TSSrunoff_lat_inc(j) = inp_dLat(j)
       ENDDO
 #endif /* USE_EXF_INTERPOLATION */
 
@@ -1124,6 +1165,13 @@ C     warn if darwin and radtrans ice forcing are different
         WRITE(msgBuf,'(2A)') 'DARWIN_EXF_READPARMS: The use of ',
      &   'useExfYearlyFields AND',
      &   'ALKrunoffRepCycle is not implemented'
+        CALL PRINT_ERROR( msgBuf, myThid )
+        errCount = errCount + 1
+       ENDIF
+       IF ( TSSrunoffRepCycle.NE.0. ) THEN
+        WRITE(msgBuf,'(3A)') 'DARWIN_EXF_READPARMS: The use of ',
+     &   'useExfYearlyFields AND ',
+     &   'TSSrunoffRepCycle is not implemented'
         CALL PRINT_ERROR( msgBuf, myThid )
         errCount = errCount + 1
        ENDIF

@@ -49,6 +49,7 @@
  PTRACERS_names(31)= 'Chl03',
  PTRACERS_names(32)= 'Chl04',
  PTRACERS_names(33)= 'Chl05',
+ PTRACERS_names(34)= 'TSS',
 #
  PTRACERS_units( 1)= 'uM C'
  PTRACERS_units( 2)= 'uM N'
@@ -83,4 +84,7 @@
  PTRACERS_units(31)= 'mg/m^3'
  PTRACERS_units(32)= 'mg/m^3'
  PTRACERS_units(33)= 'mg/m^3'
+ PTRACERS_units(34)= 'g/m^3'
+ &
+ PTRACERS_initialFile(34)= 'init2/ini_CCS_80x100x48_TSS.bin',
  &

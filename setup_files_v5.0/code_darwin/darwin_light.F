@@ -134,7 +134,11 @@ C TODO should include hFacC
      &                CDOMatten(i,j))*DRF(k)
 #else
          atten(i,j) = (katten_w + katten_Chl*Chl(i,j))*DRF(k)
-#endif       
+#endif
+#ifdef DARWIN_ALLOW_TSS
+         atten(i,j) = atten(i,j) + katten_TSS*Ptracer(i,j,k,bi,bj,iTSS)
+#endif
+         atten(i,j) = atten(i,j)*DRF(k)     
 #ifdef DARWIN_AVPAR
          PAR(i,j,k) = PARF(i,j)*(1.0 - EXP(-atten(i,j)))/atten(i,j)
 #else /* USE_MIDPAR */

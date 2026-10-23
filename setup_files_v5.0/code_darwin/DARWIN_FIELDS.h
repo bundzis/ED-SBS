@@ -78,12 +78,18 @@ C
      &      botSnkN,
      &      botSnkP,
      &      botSnkFe,
+#ifdef DARWIN_ALLOW_TSS
+     &      botSnkTSS,
+#endif
      &      botSnkSi
       _RL botSnkC(sNx,sNy,nSx,nSy)
       _RL botSnkN(sNx,sNy,nSx,nSy)
       _RL botSnkP(sNx,sNy,nSx,nSy)
       _RL botSnkFe(sNx,sNy,nSx,nSy)
       _RL botSnkSi(sNx,sNy,nSx,nSy)
+#ifdef DARWIN_ALLOW_TSS
+      _RL botSnkTSS(sNx,sNy,nSx,nSy)
+#endif
 # endif
 
 #ifdef DARWIN_ALLOW_CARBON

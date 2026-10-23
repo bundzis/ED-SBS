@@ -268,6 +268,18 @@ C     errCount  :: error counter
      I  myThid )
       ENDIF
 
+      IF ( TSSrunofffile .NE. ' ' ) THEN
+# ifdef ALLOW_DEBUG
+       IF (debugMode) CALL DEBUG_CALL('GETFFIELD_START TSSrunoff',
+     &  myThid)
+# endif
+       CALL EXF_GETFFIELD_START( useExfYearlyFields,
+     I                         'darwin', 'TSSrunoff', TSSrunoffperiod,
+     I                         TSSrunoffstartdate1, TSSrunoffstartdate2,
+     U                         TSSrunoffStartTime, errCount,
+     I                         myThid )
+      ENDIF
+
       IF ( errCount.GE.1 ) THEN
        WRITE(msgBuf,'(A,I3,A)')
      &     'DARWIN_EXF_INIT_FIXED: detected', errCount,' fatal error(s)'

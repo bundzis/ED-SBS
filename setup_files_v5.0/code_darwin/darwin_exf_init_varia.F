@@ -268,6 +268,19 @@ C     these load constant forcing fields
 #endif
      &     mythid )
 
+      call exf_init_fld (
+     &     'TSSrunoff', TSSrunofffile, TSSrunoffmask,
+     &     TSSrunoffperiod, darwin_inscal_TSSrunoff, TSSrunoffconst,
+     &     TSSrunoff, TSSrunoff0, TSSrunoff1,
+#ifdef USE_EXF_INTERPOLATION
+     &     TSSrunoff_lon0, TSSrunoff_lon_inc,
+     &     TSSrunoff_lat0, TSSrunoff_lat_inc,
+     &     TSSrunoff_nlon, TSSrunoff_nlat, xC, yC,
+     &     TSSrunoff_interpMethod,
+#endif
+     &     mythid )
+
+
       IF (darwin_loadFieldsEarly) THEN
 C       these load time-varying forcing fields
 C       (usually done in darwin_fields_load, but may be needed for chl)
@@ -537,6 +550,20 @@ C       (usually done in darwin_fields_load, but may be needed for chl)
 #endif
      &     starttime, nIter0, mythid )
 
+        call exf_set_fld(
+     &     'TSSrunoff', TSSrunofffile, TSSrunoffmask,
+     &     TSSrunoffStartTime, TSSrunoffperiod, TSSrunoffRepCycle,
+     &     darwin_inscal_TSSrunoff,
+     &     TSSrunoff_exfremo_intercept, TSSrunoff_exfremo_slope,
+     &     TSSrunoff, TSSrunoff0, TSSrunoff1,
+#ifdef USE_EXF_INTERPOLATION
+     &     TSSrunoff_lon0, TSSrunoff_lon_inc,
+     &     TSSrunoff_lat0, TSSrunoff_lat_inc,
+     &     TSSrunoff_nlon, TSSrunoff_nlat, xC, yC,
+     &     TSSrunoff_interpMethod,
+#endif
+     &     starttime, nIter0, mythid )
+
         _EXCH_XY_RL( surfPAR, myThid )
         _EXCH_XY_RL( inputFe, myThid )
         _EXCH_XY_RL( iceFrac, myThid )
@@ -556,6 +583,7 @@ C       (usually done in darwin_fields_load, but may be needed for chl)
         _EXCH_XY_RL( PONrunoff, myThid )
         _EXCH_XY_RL( DICrunoff, myThid )
         _EXCH_XY_RL( ALKrunoff, myThid )
+        _EXCH_XY_RL( TSSrunoff, myThid )
 
       ENDIF
 

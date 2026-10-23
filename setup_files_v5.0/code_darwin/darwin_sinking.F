@@ -100,6 +100,11 @@ C-    Account for change in level thickness
           flux = wFe_sink*MAX(0 _d 0, Ptr(i,j,k,bi,bj,iPOFe))
           gTr(i,j,k  ,iPOFe) = gTr(i,j,k  ,iPOFe) - flux*upfc
           gTr(i,j,k+1,iPOFe) = gTr(i,j,k+1,iPOFe) + flux*dnfc
+#ifdef DARWIN_ALLOW_TSS
+          flux = wTSS_sink*MAX(0 _d 0, Ptr(i,j,k,bi,bj,iTSS))
+          gTr(i,j,k  ,iTSS) = gTr(i,j,k  ,iTSS) - flux*upfc
+          gTr(i,j,k+1,iTSS) = gTr(i,j,k+1,iTSS) + flux*dnfc
+#endif
           DO l = 1, nplank
            flux = (biosink(l)+bioswimDVMdn(i,j,k,l))*MAX(0.0,
      &           Ptr(i,j,k,bi,bj,ic+l-1))
@@ -231,6 +236,13 @@ C
           gTr(i,j,k  ,iPOSi) = gTr(i,j,k  ,iPOSi) - flux*upfc
 #ifdef DARWIN_ALLOW_CONS
           botSnkSi(i,j,bi,bj) = botSnkSi(i,j,bi,bj) + dTsub(k)*flux
+#endif
+#ifdef DARWIN_ALLOW_TSS
+          flux = wTSS_sink*MAX(0 _d 0, Ptr(i,j,k,bi,bj,iTSS))
+          gTr(i,j,k  ,iTSS) = gTr(i,j,k  ,iTSS) - flux*upfc
+#ifdef DARWIN_ALLOW_CONS
+          botSnkTSS(i,j,bi,bj) = botSnkTSS(i,j,bi,bj) + dTsub(k)*flux
+#endif          
 #endif
           DO l = 1, nplank
            flux = biosink(l)*MAX(0 _d 0, Ptr(i,j,k,bi,bj,ic+l-1))

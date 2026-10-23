@@ -54,6 +54,8 @@ C this needs to be defined for coupling to atmospheric model:
 C enable RADI sediment model
 #undef  DARWIN_ALLOW_RADI
 
+C enable passive tracers of total suspended sediment
+#define DARWIN_ALLOW_TSS
 
 C optional bits
 
