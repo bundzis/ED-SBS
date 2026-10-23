@@ -11,16 +11,17 @@ added on later...
 --------------------------------------------------------------------------
 
 (23/10/2026)
-Copied Raphael's TSS code from: https://github.com/search?q=repo%3AMITgcm-contrib%2Fecco_darwin+path%3A%2F%5Eregions%5C%2FCCS%5C%2Fv05_kelp%5C%2F%2F+TSS&type=code
+- Copied Raphael's TSS code from: https://github.com/search?q=repo%3AMITgcm-contrib%2Fecco_darwin+path%3A%2F%5Eregions%5C%2FCCS%5C%2Fv05_kelp%5C%2F%2F+TSS&type=code
+- Added Raphael's changes into the existing code (which is copied version of setup_files_v3.2)
 
 
 
-*See below fo Old Instructions on Compiling & Running*
-# Running instructions for ED-SBS v3.2
+*See below for Old Instructions on Compiling & Running*
+## Running instructions for ED-SBS v3.2
 
 WARNING: An Earthdata account is required to download forcing files. Create it at: https://urs.earthdata.nasa.gov/users/new
 
-## 1. Clone darwin environmemt 
+### 1. Clone darwin environmemt 
 Note: ED-SBS v3.1 runs on darwin checkpoint v69a (commit b537eb4)
 
 ```
@@ -29,7 +30,7 @@ git checkout b537eb4
 ```
 
 
-## 2. Build executable
+### 2. Build executable
 Note: Message Passing Interface (MPI) needs to be installed to lauch parrallel computing.
 More informations can be fin at https://darwin3.readthedocs.io/en/latest/getting_started/getting_started.html#building-with-mpi
 
@@ -43,7 +44,7 @@ make depend
 make -j 16
 ```
 
-## 3. Download the forcing files
+### 3. Download the forcing files
 Note: You need your WebDAV password accessible at: https://ecco.jpl.nasa.gov/drive
 ```
 wget -r --no-parent --user=USERNAME --ask-password https://ecco.jpl.nasa.gov/drive/files/Version5/Alpha/era_xx
@@ -51,7 +52,7 @@ wget -r --no-parent --user=USERNAME --ask-password https://ecco.jpl.nasa.gov/dri
 wget -r --no-parent --user=USERNAME --ask-password https://ecco.jpl.nasa.gov/drive/files/ECCO2/LLC270/Mac_Delta/river_runoff
 ```
 
-## 4. Prepare the simulation
+### 4. Prepare the simulation
 Note: You need to download the forcing files on ECCO data portal 
 
 ```
@@ -79,7 +80,7 @@ ln -sf /../../Forcing/run_template/eta_adjust/OBWu_Mac_46x68.bal_ROFF OBWu_Mac_4
 -- Copy setup files -- 
 cp ../../setup_files_v3.2/input/* .
 ```
-## 4. Run the code
+### 4. Run the code
 
 ```
 mpirun -np 8 ./mitgsmuv &
