@@ -1,7 +1,18 @@
 # ED-SBS v.50
-Right now (22/10/2026), this is a copy of setup_filesv3.2 but using a few edits to some files to get it to compile (and hopefully run) with the current darwin3 repo. 
+-------------------------------------------------------------------------
+Right now (22/10/2026), this is a copy of setup_filesv3.2 but using a 
+few edits to some files to get it to compile (and hopefully run) with the 
+current darwin3 repo. 
 
-The goal of this setup version is to add in a sediment tracer that can settle and interact with the light field. Sediment resuspension may be added on later...
+The goal of this setup version is to add in a sediment tracer that can 
+settle and interact with the light field. Sediment resuspension may be 
+added on later...
+--------------------------------------------------------------------------
+
+(23/10/2026)
+Copied Raphael's TSS code from: https://github.com/search?q=repo%3AMITgcm-contrib%2Fecco_darwin+path%3A%2F%5Eregions%5C%2FCCS%5C%2Fv05_kelp%5C%2F%2F+TSS&type=code
+
+
 
 # --- See below fo Old Instructions on Compiling & Running ---
 # Running instructions for ED-SBS v3.2
